@@ -1,0 +1,65 @@
+{% extends 'main/base.html' %}
+{% block title%}{{product.title}}{% endblock %}
+{% block mastheadtitle%}{{header.title}}{% endblock %}
+{% block mastheadimage%}{{header.image.url}}{% endblock %}
+{% block content %}
+
+<section id="products" style="min-height: 100%;">
+<div class="album py-5 bg-light">
+<div class="container">
+<h1 class="fw-light">{{product.title}}</h1>
+<br>
+<div class="row row-cols-1 row-cols-md-2 g-3" style="min-height: 400px;">
+
+<div class="col">
+<div class="card shadow-sm">
+
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+
+        {% for image in images %}
+        {% if forloop.first	%}
+            <div class="carousel-item active">
+        {% else %}
+            <div class="carousel-item">
+        {% endif %}        
+            <img class="d-block w-100" style="max-height: 400px; object-fit: cover; object-position: center;" src="{{image.image.url}}">
+        </div>
+        {% endfor %}
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+</div>
+</div>
+
+
+
+<div class="col">
+<div class="card shadow-sm">
+
+
+<div class="card-body">
+<h2 class="fw-light">{{product.title}}</h2><br>
+<p class="card-text">{{product.desc}}</p><br>
+<h2 class="fw-light">${{product.price}}</h2><br>
+<div class="d-flex justify-content-between align-items-center">
+<div class="d-grid gap-2 col-12 mx-auto">
+<button class="btn btn-primary" type="button">Purchase</button>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+</div></section>
+
+{% endblock %}
